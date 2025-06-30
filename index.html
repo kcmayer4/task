@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+</head>
+<body>
+    <h1>Counter: <span id="counter">0</span></h1>
+    <button id="increment-btn">Increment</button>
+    <button id="decrement-btn">Decrement</button>
+
+    <script>
+        const counterElement = document.getElementById('counter');
+        const buttonUp = document.getElementById('increment-btn');
+        const buttonDown = document.getElementById('decrement-btn');
+
+        buttonUp.addEventListener('click', () => {
+            let count = parseInt(counterElement.textContent, 10);
+            counterElement.textContent = count + 1;
+        });
+
+        buttonDown.addEventListener('click', () => {
+            let count = parseInt(counterElement.textContent, 10);
+            counterElement.textContent = count - 1;
+        });
+
+    </script>
+</body>
+</html>

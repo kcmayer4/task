@@ -1,0 +1,13 @@
+{
+    "name": "mini-project",
+    "version": "1.0.0",
+    "devDependencies": {
+        "@playwright/test": "^1.53.1",
+        "http-server": "^14.1.1"
+    },
+    "scripts": {
+        "start": "http-server -p 3000 -c-1",
+        "test": "playwright test",
+        "test:report": "playwright show-report"
+    }
+}
