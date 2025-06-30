@@ -1,13 +1,18 @@
 name: E2E Verification
 
 on:
+  # Trigger on Pull Requests targeting the main branch
   pull_request:
     branches: [ "main" ]
+
+  # Also allow manual triggering from the GitHub Actions UI
+  workflow_dispatch:
 
 jobs:
   verify-e2e:
     timeout-minutes: 15
-    runs-on: self-hosted
+    runs-on: [self-hosted, local-runner]
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
