@@ -11,7 +11,7 @@ on:
 jobs:
   verify-e2e:
     timeout-minutes: 15
-    runs-on: [self-hosted, local-runner]
+    runs-on: self-hosted
 
     steps:
       - name: Checkout repository
