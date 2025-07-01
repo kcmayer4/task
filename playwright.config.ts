@@ -4,7 +4,14 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
     testDir: './tests', // Where to look for tests
     fullyParallel: true,
-    reporter: 'html',   // Creates a beautiful report after tests run
+    reporter: [
+        ['list'], // Keep the default 'list' reporter for console output
+        ['allure-playwright', {
+            detail: true,
+            outputFolder: 'allure-results',
+            suiteTitle: false
+        }]
+    ],   // Creates a beautiful report after tests run
     use: {
         baseURL: 'http://localhost:3000', // Base URL for all page navigations
         trace: 'on-first-retry',
