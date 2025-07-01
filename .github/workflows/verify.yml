@@ -42,20 +42,27 @@ jobs:
       - name: Configure Git for large pushes
         run: git config --global http.postBuffer 524288000 # 500 MB
 
-      # NEW STEP: Deploy Report to GitHub Pages
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        env:
-          # This tells Git to use a non-existent config file, effectively ignoring
-          # your Mac's global .gitconfig and any credential helpers.
-          GIT_CONFIG_GLOBAL: /dev/null
-        with:
-          personal_token: ${{ secrets.GH_PAGES_PAT }}
-          # The folder the action should deploy.
-          publish_dir: ./allure-report
-          # The branch to which the report will be pushed.
-          publish_branch: gh-pages
-          # A personal access token is required to trigger workflows from other workflows.
-          # Create a PAT with `repo` scope and add it to your repository secrets.
-          # This is optional but useful if you want this deployment to trigger other actions.
-          # personal_token: ${{ secrets.GH_PAGES_PAT }}
+      # NEW STEP: Deploy Report to GitHub Pages MANUALLY
+      - name: Deploy Allure Report to GitHub Pages
+        run: |
+          # Navigate into the report directory
+          cd allure-report
+
+          # Create a .nojekyll file to prevent GitHub from running Jekyll
+          touch .nojekyll
+
+          # Initialize a new git repository in the report directory
+          git init
+          git add .
+          
+          # Configure git user for the commit
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # Commit the report files
+          git commit -m "Deploy Allure report"
+
+          # Push to the gh-pages branch, creating it if it doesn't exist.
+          # The -f (force) flag is important to overwrite previous reports.
+          # We are explicitly constructing the push URL with the PAT.
+          git push -f "https://${{ github.actor }}:${{ secrets.GH_PAGES_PAT }}@github.com/${{ github.repository }}.git" HEAD:gh-pages
