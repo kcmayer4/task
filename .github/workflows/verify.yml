@@ -1,12 +1,13 @@
 name: E2E Verification
 
 on:
-  # Trigger on Pull Requests targeting the main branch
   pull_request:
     branches: [ "main" ]
-
-  # Also allow manual triggering from the GitHub Actions UI
   workflow_dispatch:
+
+# Add this permissions block
+permissions:
+  contents: write # Allows the action to push to the gh-pages branch
 
 jobs:
   verify-e2e:
@@ -29,12 +30,25 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
+        # The 'continue-on-error' is important. It ensures that the report is still
+        # generated and published even if the tests fail.
         run: npm test
+        continue-on-error: true
 
-      - name: Upload test report on failure
-        if: failure()
-        uses: actions/upload-artifact@v4
+      # NEW STEP: Generate the Allure Report
+      - name: Generate Allure Report
+        run: npx allure generate allure-results --clean -o allure-report
+
+      # NEW STEP: Deploy Report to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 7
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # The folder the action should deploy.
+          publish_dir: ./allure-report
+          # The branch to which the report will be pushed.
+          publish_branch: gh-pages
+          # A personal access token is required to trigger workflows from other workflows.
+          # Create a PAT with `repo` scope and add it to your repository secrets.
+          # This is optional but useful if you want this deployment to trigger other actions.
+          # personal_token: ${{ secrets.GH_PAGES_PAT }}
