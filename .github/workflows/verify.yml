@@ -24,11 +24,10 @@ jobs:
       - name: Run linter
         run: npm run lint
 
-  # This is the job definition that was missing
   test-and-report:
     name: Run E2E Tests & Publish Report
     runs-on: self-hosted
-    needs: lint # Make sure this job depends on the lint job
+    needs: lint
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -38,29 +37,10 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Cache npm dependencies
-        uses: actions/cache@v4
-        id: npm-cache
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
-
-      - name: Cache Playwright browsers
-        uses: actions/cache@v4
-        id: playwright-cache
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-playwright-
-
       - name: Install dependencies
         run: npm ci
 
       - name: Install Playwright Browsers
-        if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
@@ -80,10 +60,3 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Deploy Allure report for ${{ github.sha }}"
           git push -f "https://${{ github.actor }}:${{ secrets.GH_PAGES_PAT }}@github.com/${{ github.repository }}.git" HEAD:gh-pages
-
-      - name: Clean up generated artifacts
-        if: always()
-        run: |
-          rm -rf allure-report
-          rm -rf test-results
-          rm -rf playwright-report
