@@ -29,16 +29,16 @@ All code should be on Github, the GH runner should have had at least one seccess
 # 2. Solution
 
 Implemented Playwright instead of Cypress for several reasons:
-1. True Cross-Browser Support: Playwright's first-class support for Chromium, Firefox, and especially WebKit is a huge advantage. It ensures that we can have high confidence that our application works for all our users, not just those on Chrome. For a real product, testing on the Safari engine is non-negotiable.
-2. Architectural Flexibility: Playwright's architecture allows it to handle complex scenarios like multiple tabs and cross-origin authentication flows seamlessly. These are common in modern web apps, and having a tool that supports them natively prevents us from having to use complex workarounds down the line.
-3. Performance at Scale: For a CI/CD pipeline, test execution speed is critical. Playwright is renowned for its performance and its powerful, easy-to-configure parallelization. As the test suite grows, this means our 'verify' step on pull requests will stay fast, keeping developer feedback loops tight.
-4. Superior Debugging for CI: While I love the Cypress UI for local development, the Playwright Trace Viewer is incredibly powerful for debugging tests that fail in the CI/CD pipeline. It captures a complete, interactive trace of the test run, which drastically reduces the time it takes to diagnose and fix flaky tests.
+1. True Cross-Browser Support: Playwright supports  Chromium, Firefox, and WebKit. 
+2. Architectural Flexibility: Playwright's architecture allows it to handle complex scenarios like multiple tabs and cross-origin authentication flows seamlessly. 
+3. Performance at Scale: Playwright is renowned for its performance and its powerful, easy-to-configure parallelization, which is very useful for CI/CD pipelines.
+4. Superior Debugging for CI: While Cypress is fine for local development, the Playwright Trace Viewer is very powerful for debugging tests that fail in the CI/CD pipeline. 
 
 Set up self-hosted runner for GitHub Workflows for several reasons:
-1. Security: No code, secrets or test results hosted on GitHub cloud.
-2. GDPR: No risk of giving personal data do third parties, even when mostly using mock data.
-3. Control: Full control over the runner.
-4. Scalability: Full control over scalability.
+1. Security: No code, secrets or test results hosted on GitHub cloud
+2. GDPR: No risk of giving personal data do third parties, even when mostly using mock data
+3. Control: Full control over the runner
+4. Scalability: Full control over scalability
 
 Set up allure reports:
 1. Visualisation: Better visualisation of test results over playwrights built in reporter
@@ -46,26 +46,7 @@ Set up allure reports:
 3. Control: More control over report contents and reports structures
 
 Set up GitHub Pages for the display of reports:
-1. Continuity: Every new run updates results on https://kcmayer4.github.io/task/
+1. Continuity: Every new runs results are deployed on https://kcmayer4.github.io/task/
 2. Accessibility: Available to everyone who has the link
 3. Overview: No need for sending "spam mails" to stakeholders with every run
 
----
-
-## 3. Test Plan & Coverage
-
-The test suite is designed to cover multiple aspects of quality, including functional correctness, edge cases, and accessibility.
-
-| Test Case ID | Category        | Description                                                       | Expected Status         |
-|--------------|-----------------|-------------------------------------------------------------------|-------------------------|
-| **TC-01**    | Functional      | Verifies the counter displays '0' on initial page load.           | **Passing**             |
-| **TC-02**    | Functional      | Verifies a single click on "Increment" changes the counter to '1'.  | **Passing**             |
-| **TC-03**    | **Business Logic**  | Verifies the counter cannot be decremented below '0'.             | **Intentionally Failing** |
-| **TC-04**    | Functional      | Verifies decrementing from a positive number works correctly.     | **Passing**             |
-| **TC-05**    | Functional      | Verifies that multiple increment clicks are handled correctly.    | **Passing**             |
-| **TC-06**    | Edge Case       | Verifies the counter correctly handles rapid-fire clicks.         | **Passing**             |
-| **TC-07**    | Functional      | Verifies a complex sequence of increments and decrements.         | **Passing**             |
-| **TC-08**    | **Accessibility** | Verifies the counter can be fully operated using only the keyboard. | **Passing**             |
-| **TC-09**    | **Accessibility** | Verifies correct ARIA attributes are present for screen readers.    | **Passing**             |
-
-The **Intentionally Failing** test (TC-03) is the most valuable output of this exercise, as it successfully identifies a bug where the application does not meet its core requirement.

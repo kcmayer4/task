@@ -1,5 +1,5 @@
 // tests/counter.spec.ts
-import { test, expect } from '@playwright/test';
+import {test, expect, devices} from '@playwright/test';
 
 // Group tests for better organization
 test.describe('Counter Application', () => {
@@ -10,7 +10,6 @@ test.describe('Counter Application', () => {
         await page.goto('http://localhost:3000');
     });
 
-    // --- Existing Functional Tests ---
 
     // Test Case ID: TC-01
     test('should display 0 on initial load', async ({ page }) => {
@@ -53,7 +52,6 @@ test.describe('Counter Application', () => {
         await expect(page.locator('#counter')).toHaveText('5');
     });
 
-    // --- NEW TEST CASES ---
 
     // Test Case ID: TC-06 (Edge Case / User Behavior)
     test('should handle rapid-fire clicks correctly', async ({ page }) => {
@@ -113,5 +111,51 @@ test.describe('Counter Application', () => {
         // A live-updating region should announce its changes to screen readers.
         // 'aria-live="polite"' is the standard way to do this.
         await expect(counter).toHaveAttribute('aria-live', 'polite');
+    });
+
+    // Test Case ID: TC-10 (State Management)
+    test('should reset to 0 on page reload', async ({ page }) => {
+        const incrementBtn = page.locator('#increment-btn');
+        const counter = page.locator('#counter');
+
+        // Increment to a non-zero value
+        await incrementBtn.click();
+        await incrementBtn.click();
+        await expect(counter).toHaveText('2');
+
+        // Reload the page
+        await page.reload();
+
+        // Assert that the counter has reset to its initial state
+        await expect(counter).toHaveText('0');
+    });
+});
+
+
+    // A separate block for Visual and Responsive tests is good practice
+    test.describe('Counter Application - Visual & Responsive', () => {
+
+    // Test Case ID: TC-11 (Visual Regression)
+    test('should match the visual snapshot on initial load', async ({ page }) => {
+        // This test takes a screenshot and compares it to a master "golden" image.
+        // It will fail if any CSS, layout, font, or color changes.
+        // The first run creates the snapshot. Subsequent runs compare against it.
+        await expect(page).toHaveScreenshot('counter-initial-state.png');
+    });
+
+    // Test Case ID: TC-12 (Responsive Testing)
+    test('should be laid out correctly on a mobile viewport', async ({ page }) => {
+        // Use a predefined mobile device from Playwright's device list
+        await page.setViewportSize(devices['iPhone 13'].viewport);
+
+        const counter = page.locator('#counter');
+        const incrementBtn = page.locator('#increment-btn');
+
+        // Check if the elements are visible on the mobile screen
+        await expect(counter).toBeVisible();
+        await expect(incrementBtn).toBeVisible();
+
+        // Optional: Take a mobile-specific snapshot to lock in the responsive layout
+        await expect(page).toHaveScreenshot('counter-mobile-view.png');
     });
 });
