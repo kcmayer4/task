@@ -49,3 +49,23 @@ Set up GitHub Pages for the display of reports:
 1. Continuity: Every new run updates results on https://kcmayer4.github.io/task/
 2. Accessibility: Available to everyone who has the link
 3. Overview: No need for sending "spam mails" to stakeholders with every run
+
+---
+
+## 3. Test Plan & Coverage
+
+The test suite is designed to cover multiple aspects of quality, including functional correctness, edge cases, and accessibility.
+
+| Test Case ID | Category        | Description                                                       | Expected Status         |
+|--------------|-----------------|-------------------------------------------------------------------|-------------------------|
+| **TC-01**    | Functional      | Verifies the counter displays '0' on initial page load.           | **Passing**             |
+| **TC-02**    | Functional      | Verifies a single click on "Increment" changes the counter to '1'.  | **Passing**             |
+| **TC-03**    | **Business Logic**  | Verifies the counter cannot be decremented below '0'.             | **Intentionally Failing** |
+| **TC-04**    | Functional      | Verifies decrementing from a positive number works correctly.     | **Passing**             |
+| **TC-05**    | Functional      | Verifies that multiple increment clicks are handled correctly.    | **Passing**             |
+| **TC-06**    | Edge Case       | Verifies the counter correctly handles rapid-fire clicks.         | **Passing**             |
+| **TC-07**    | Functional      | Verifies a complex sequence of increments and decrements.         | **Passing**             |
+| **TC-08**    | **Accessibility** | Verifies the counter can be fully operated using only the keyboard. | **Passing**             |
+| **TC-09**    | **Accessibility** | Verifies correct ARIA attributes are present for screen readers.    | **Passing**             |
+
+The **Intentionally Failing** test (TC-03) is the most valuable output of this exercise, as it successfully identifies a bug where the application does not meet its core requirement.
