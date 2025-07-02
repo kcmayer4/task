@@ -2,10 +2,10 @@
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-    testDir: './tests', // Where to look for tests
+    testDir: './tests',
     fullyParallel: true,
     reporter: [
-        ['list'], // Keep the default 'list' reporter for console output
+        ['list'],
         ['allure-playwright', {
             detail: true,
             outputFolder: 'allure-results',
@@ -13,8 +13,12 @@ export default defineConfig({
         }]
     ],   // Creates a beautiful report after tests run
     use: {
-        baseURL: 'http://localhost:3000', // Base URL for all page navigations
-        trace: 'on-first-retry',
+        baseURL: 'http://localhost:3000',
+
+        // --- AUTOMATIC EVIDENCE CAPTURE ON FAILURE ---
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+        trace: 'retain-on-failure',
     },
 
     // This section automatically starts your local server for the tests
