@@ -129,7 +129,6 @@ test.describe('Counter Application', () => {
         // Assert that the counter has reset to its initial state
         await expect(counter).toHaveText('0');
     });
-});
 
 
     // A separate block for Visual and Responsive tests is good practice
@@ -140,6 +139,8 @@ test.describe('Counter Application', () => {
         // This test takes a screenshot and compares it to a master "golden" image.
         // It will fail if any CSS, layout, font, or color changes.
         // The first run creates the snapshot. Subsequent runs compare against it.
+        const counter = page.locator('#counter');
+        await expect(counter).toBeVisible();
         await expect(page).toHaveScreenshot('counter-initial-state.png');
     });
 
@@ -158,4 +159,5 @@ test.describe('Counter Application', () => {
         // Optional: Take a mobile-specific snapshot to lock in the responsive layout
         await expect(page).toHaveScreenshot('counter-mobile-view.png');
     });
+});
 });
