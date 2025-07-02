@@ -24,3 +24,28 @@ All code should be on Github, the GH runner should have had at least one seccess
    ```bash
    npx http-server -p 3000
    ```
+
+
+# 2. Solution
+
+Implemented Playwright instead of Cypress for several reasons:
+1. True Cross-Browser Support: Playwright's first-class support for Chromium, Firefox, and especially WebKit is a huge advantage. It ensures that we can have high confidence that our application works for all our users, not just those on Chrome. For a real product, testing on the Safari engine is non-negotiable.
+2. Architectural Flexibility: Playwright's architecture allows it to handle complex scenarios like multiple tabs and cross-origin authentication flows seamlessly. These are common in modern web apps, and having a tool that supports them natively prevents us from having to use complex workarounds down the line.
+3. Performance at Scale: For a CI/CD pipeline, test execution speed is critical. Playwright is renowned for its performance and its powerful, easy-to-configure parallelization. As the test suite grows, this means our 'verify' step on pull requests will stay fast, keeping developer feedback loops tight.
+4. Superior Debugging for CI: While I love the Cypress UI for local development, the Playwright Trace Viewer is incredibly powerful for debugging tests that fail in the CI/CD pipeline. It captures a complete, interactive trace of the test run, which drastically reduces the time it takes to diagnose and fix flaky tests.
+
+Set up self-hosted runner for GitHub Workflows for several reasons:
+1. Security: No code, secrets or test results hosted on GitHub cloud.
+2. GDPR: No risk of giving personal data do third parties, even when mostly using mock data.
+3. Control: Full control over the runner.
+4. Scalability: Full control over scalability.
+
+Set up allure reports:
+1. Visualisation: Better visualisation of test results over playwrights built in reporter
+2. Details: More detailed reports of test results
+3. Control: More control over report contents and reports structures
+
+Set up GitHub Pages for the display of reports:
+1. Continuity: Every new run updates results on https://kcmayer4.github.io/task/
+2. Accessibility: Available to everyone who has the link
+3. Overview: No need for sending "spam mails" to stakeholders with every run
