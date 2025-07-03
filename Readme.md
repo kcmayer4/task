@@ -49,9 +49,9 @@ Set up GitHub Pages for the display of reports:
 1. Continuity: Every new runs results are deployed on https://kcmayer4.github.io/task/
 2. Accessibility: Available to everyone who has the link
 3. Overview: No need for sending "spam mails" to stakeholders with every run
-4. Cons: Only suitable with GitHub enterprise subscription for security reasons
+4. Cons: Only suitable with GitHub enterprise subscription for security reasons.
    If no subscription, reports can be sent via email or hosted on a local website to ensure confidentiality of content
-
+   For this interview task a public repository is fine, but wouldn't be secure for a real project.
 
 # 3. Test Plan
 
