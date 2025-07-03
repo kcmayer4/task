@@ -1,4 +1,4 @@
-name: E2E Verification
+name: CounterTaskWorkflow
 
 on:
   pull_request:
