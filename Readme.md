@@ -55,6 +55,7 @@ Set up allure reports:
 1. Visualisation: Better visualisation of test results over playwrights built in reporter
 2. Details: More detailed reports of test results
 3. Control: More control over report contents and reports structures
+4. Exhibits: Failure screenshots and recordings are attached to the allure report
 
 Set up GitHub Pages for the display of reports:
 1. Continuity: Every new runs results are deployed to GitHub pages automatically
