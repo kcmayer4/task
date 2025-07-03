@@ -50,3 +50,7 @@ Set up GitHub Pages for the display of reports:
 2. Accessibility: Available to everyone who has the link
 3. Overview: No need for sending "spam mails" to stakeholders with every run
 
+
+# 3. Test Plan
+
+Test plan and structure are defined at  ./test-plan/test-plan.md
