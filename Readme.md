@@ -57,7 +57,7 @@ Set up allure reports:
 3. Control: More control over report contents and reports structures
 
 Set up GitHub Pages for the display of reports:
-1. Continuity: Every new runs results are deployed on https://kcmayer4.github.io/task/
+1. Continuity: Every new runs results are deployed to GitHub pages automatically
 2. Accessibility: Available to everyone who has the link
 3. Overview: No need for sending "spam mails" to stakeholders with every run
 4. Cons: Only works for public repos and GitHub enterprise subscription accounts.
@@ -68,4 +68,4 @@ Set up GitHub Pages for the display of reports:
 
 1. Test plan and structure are defined at  `test-plan/test-plan.md`
 2. To start workflow, open workflow "CounterTaskWorkflow" inside Git repo and click "Run Workflow"
-3. After "CounterTaskWorkflow" is done, "pages-build-deployment" is triggered automatically to deploy allure report
+3. After "CounterTaskWorkflow" is done, "pages-build-deployment" is triggered automatically to deploy allure report at https://kcmayer4.github.io/task/
