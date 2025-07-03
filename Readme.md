@@ -69,3 +69,9 @@ Set up GitHub Pages for the display of reports:
 1. Test plan and structure are defined at  `test-plan/test-plan.md`
 2. To start workflow, open workflow "CounterTaskWorkflow" inside Git repo and click "Run Workflow"
 3. After "CounterTaskWorkflow" is done, "pages-build-deployment" is triggered automatically to deploy allure report at https://kcmayer4.github.io/task/
+
+
+# 4. AI
+
+1. Gemini was used for spell checking, error analysis as well as npm commands and POM refactoring 
+2. Project structure, tech stack, tools and ideas came from personal experience and were just checked against Gemini to ensure best practice
