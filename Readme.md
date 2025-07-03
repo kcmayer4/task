@@ -53,4 +53,4 @@ Set up GitHub Pages for the display of reports:
 
 # 3. Test Plan
 
-Test plan and structure are defined at  ./test-plan/test-plan.md
+Test plan and structure are defined at  /test-plan/test-plan.md
