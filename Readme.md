@@ -40,6 +40,11 @@ Set up self-hosted runner for GitHub Workflows for several reasons:
 3. Control: Full control over the runner
 4. Scalability: Full control over scalability
 
+Set up Page-Object-Model (POM):
+1. Maintainability: Element IDs only have to updated in one location
+2. Readability: Test cases are easier to understand
+3. Productivity: Functions and locators can be reused instead of having to be defined for every use
+
 Set up ES Lint:
 1. Static analysis: Catches bugs before they happen
 2. Consistency: Enforces consistent code style
