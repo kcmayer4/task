@@ -59,6 +59,7 @@ Set up GitHub Pages for the display of reports:
    If no subscription, reports can be sent via email or hosted on a local website to ensure confidentiality of content
    For this interview task a public repository is fine, but wouldn't be secure for a real project.
 
-# 3. Test Plan
+# 3. Test Plan & Usage
 
-Test plan and structure are defined at  `test-plan/test-plan.md`
+1. Test plan and structure are defined at  `test-plan/test-plan.md`
+2. To start workflow, open workflow "CounterTaskWorkflow" in Git repo and click "Run Workflow"
