@@ -40,6 +40,12 @@ Set up self-hosted runner for GitHub Workflows for several reasons:
 3. Control: Full control over the runner
 4. Scalability: Full control over scalability
 
+Set up ES Lint:
+1. Static analysis: Catches bugs before they happen
+2. Consistency: Enforces consistent code style
+3. Educational: Teaches and enforces best practices
+4. Automatic fix: Increases developer productivity
+
 Set up allure reports:
 1. Visualisation: Better visualisation of test results over playwrights built in reporter
 2. Details: More detailed reports of test results
