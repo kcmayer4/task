@@ -6,12 +6,12 @@ This is a counter that should only display positive numbers, it should increment
 - choose a testing e2e framework (recommended cypress)
 - apply e2e setup to run a single test:
    - When pressing "increment", verify that counter shows 1
-- Create a Github Action pipeline, that runs the test on every PR as a "verify" step
+- Create a GitHub Action pipeline, that runs the test on every PR as a "verify" step
 - extend the tests:
   - create a test plan (can be a markdown file in the repo under i.e. `test-plan/` ), that covers the edge cases
   - implement some tests of the test-plan
  
-All code should be on Github, the GH runner should have had at least one seccessful run.  
+All code should be on GitHub, the GH runner should have had at least one successful run.  
 
 
 ### Steps to Run Locally
@@ -49,8 +49,10 @@ Set up GitHub Pages for the display of reports:
 1. Continuity: Every new runs results are deployed on https://kcmayer4.github.io/task/
 2. Accessibility: Available to everyone who has the link
 3. Overview: No need for sending "spam mails" to stakeholders with every run
+4. Cons: Only suitable with GitHub enterprise subscription for security reasons
+   If no subscription, reports can be sent via email or hosted on a local website to ensure confidentiality of content
 
 
 # 3. Test Plan
 
-Test plan and structure are defined at  /test-plan/test-plan.md
+Test plan and structure are defined at  `test-plan/test-plan.md`
