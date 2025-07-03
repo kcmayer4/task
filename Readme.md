@@ -61,7 +61,7 @@ Set up GitHub Pages for the display of reports:
 2. Accessibility: Available to everyone who has the link
 3. Overview: No need for sending "spam mails" to stakeholders with every run
 4. Cons: Only works for public repos and GitHub enterprise subscription accounts.
-   If no subscription, reports can be sent via email or hosted on a local website to ensure confidentiality of content
+   If no subscription, reports can be sent via email or hosted on a local website to ensure confidentiality of content.
    For this interview task a public repository is fine, but wouldn't be secure for a real project.
 
 # 3. Test Plan & Usage
