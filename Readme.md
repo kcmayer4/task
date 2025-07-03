@@ -36,7 +36,7 @@ Implemented Playwright instead of Cypress for several reasons:
 
 Set up self-hosted runner for GitHub Workflows for several reasons:
 1. Security: No code, secrets or test results hosted on GitHub cloud
-2. GDPR: No risk of giving personal data do third parties, even when mostly using mock data
+2. GDPR: No risk of giving any data do third parties, even when mostly using mock data
 3. Control: Full control over the runner
 4. Scalability: Full control over scalability
 
