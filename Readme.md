@@ -34,7 +34,7 @@ Implemented Playwright instead of Cypress for several reasons:
 3. Performance at Scale: Playwright is renowned for its performance and its powerful, easy-to-configure parallelization, which is very useful for CI/CD pipelines.
 4. Superior Debugging for CI: While Cypress is fine for local development, the Playwright Trace Viewer is very powerful for debugging tests that fail in the CI/CD pipeline. 
 
-Set up self-hosted runner for GitHub Workflows for several reasons:
+Set up self-hosted runner for GitHub Workflows:
 1. Security: No code, secrets or test results hosted on GitHub cloud
 2. GDPR: No risk of giving any data do third parties, even when mostly using mock data
 3. Control: Full control over the runner
