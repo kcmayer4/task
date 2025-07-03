@@ -74,5 +74,5 @@ Set up GitHub Pages for the display of reports:
 # 4. AI
 
 1. Gemini was used to help with spell checking, error analysis as well as npm commands and POM refactoring 
-2. Project structure, tech stack/tools and general approach came from personal experience and were just checked against Gemini to ensure best practice
+2. Project structure, tech stack/tools and general approach came from personal experience and were just checked against Gemini to ensure best practices
 3. Gemini was used to ensure the best possible test coverage
